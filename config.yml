@@ -1,0 +1,17 @@
+# MAIN
+title:               Susy_Kit
+tagline:
+description:         Susy_Kit description
+url:                 http://localhost:3000
+paginate:            1
+baseurl:             /
+
+# ABOUT / CONTACT
+author:
+  name:              S1SYPHOS
+  email:             hello@daktylos.net
+
+# MISC
+version:             1.0.0
+github:
+  repo:              https://github.com/NAME/REPO

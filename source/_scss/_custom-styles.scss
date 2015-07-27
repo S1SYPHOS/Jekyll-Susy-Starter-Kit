@@ -1,0 +1,127 @@
+// SUSY
+@import "../../bower_components/susy/sass/susy";
+
+// SUSY-MAP - http://susy.readthedocs.org/en/latest/settings/
+$susy: (
+  // flow: ltr,
+  // math: fluid,
+  // output: float,
+  // gutter-position: after,
+  container: 90%,
+  // container-position: center,
+  columns: 12,
+  gutters: .25,
+  // column-width: false,
+  global-box-sizing: border-box,
+  last-flow: to,
+  debug: (
+    image: show-columns,
+    // color: rgba(#66f, .25),
+    // output: background,
+    // toggle: top right,
+  ),
+  use-custom: (
+    // background-image: true,
+    // background-options: false,
+    // box-sizing: true,
+    clearfix: true,
+    // rem: true,
+  )
+);
+
+// CUSTOM CLEARFIX MIXIN
+@mixin clearfix {
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+}
+
+// BOX-SIZING: BORDER BOX
+@include border-box-sizing;
+
+// DEFAULT STYLES
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: auto;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #fff;
+  color: #000;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+a {
+  color: #268bd2;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+}
+
+
+// JUST SOME LAYOUT
+.container {
+    @include container;
+}
+
+header, article, aside {
+  margin-bottom: gutter();
+  border: 2px solid #888;
+}
+
+header {
+    padding: 1em;
+}
+
+article {
+    @include span(8);
+    padding: 2em 0;
+
+    h3 {
+        margin-left: span(1 of 8) + gutter(8);
+    }
+}
+
+aside {
+    @include span(4 last);
+    padding: 2em 0;
+
+    h3 {
+        margin-left: span(1 of 8);
+    }
+}
+
+footer {
+    clear: both;
+    padding: 1em;
+    border: 2px solid #888;
+}
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+// INSERT YOUR MAGIC HERE :)

@@ -1,0 +1,3 @@
+#!/bin/sh
+# by joseluis - https://github.com/sass/sass/issues/556
+mv bower_components/normalize.css/normalize.css bower_components/normalize.css/_normalize.scss
