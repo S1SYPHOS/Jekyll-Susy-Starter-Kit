@@ -1,5 +1,7 @@
 // SUSY
 @import "../../bower_components/susy/sass/susy";
+@import "../../bower_components/breakpoint-sass/stylesheets/breakpoint";
+
 
 // SUSY-MAP - http://susy.readthedocs.org/en/latest/settings/
 $susy: (
@@ -78,10 +80,15 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
+// MEDIA QUERIES
+$bp-small: 30em;
+$bp-medium: 48em;
+$bp-large: 64em;
+
 
 // JUST SOME LAYOUT
 .container {
-    @include container;
+  @include container;
 }
 
 header, article, aside {
@@ -90,25 +97,39 @@ header, article, aside {
 }
 
 header {
-    padding: 1em;
+  padding: 1em;
 }
 
 article {
-    @include span(8);
-    padding: 2em 0;
+  padding: 2em 0;
 
-    h3 {
-        margin-left: span(1 of 8) + gutter(8);
-    }
+  h3 {
+    margin-left: span(1 of 8) + gutter(8);
+  }
+
+  @include breakpoint($bp-small) {
+    @include span(9);
+  }
+
+  @include breakpoint($bp-medium) {
+    @include span(8);
+  }
 }
 
 aside {
-    @include span(4 last);
-    padding: 2em 0;
+  padding: 2em 0;
 
-    h3 {
-        margin-left: span(1 of 8);
-    }
+  h3 {
+    margin-left: span(1 of 8);
+  }
+
+  @include breakpoint($bp-small) {
+    @include span(3 last);
+  }
+
+  @include breakpoint($bp-medium) {
+    @include span(4 last);
+  }
 }
 
 footer {
