@@ -6,13 +6,13 @@
   "author": "S1SYPHOS <hello@daktylos.net>",
   "license": "MIT",
   "private": true,
+  "dependencies": {
+    "susy": "~2.2.5"
+  },
   "devDependencies": {
     "loadcss": "~0.1.7",
     "OptimizedWebfontLoading": "git://github.com/bdadam/OptimizedWebfontLoading.git",
     "normalize.css": "latest",
     "breakpoint-sass": "~2.6.1"
-  },
-  "dependencies": {
-    "susy": "~2.2.5"
   }
 }

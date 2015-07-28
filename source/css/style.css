@@ -375,20 +375,34 @@ header {
   padding: 1em; }
 
 article {
-  width: 66.1016949153%;
-  float: left;
-  margin-right: 1.6949152542%;
   padding: 2em 0; }
   article h3 {
     margin-left: 12.8205128205%; }
+  @media  (min-width: 30em) {
+    article {
+      width: 74.5762711864%;
+      float: left;
+      margin-right: 1.6949152542%; } }
+  @media  (min-width: 48em) {
+    article {
+      width: 66.1016949153%;
+      float: left;
+      margin-right: 1.6949152542%; } }
 
 aside {
-  width: 32.2033898305%;
-  float: right;
-  margin-right: 0;
   padding: 2em 0; }
   aside h3 {
     margin-left: 10.2564102564%; }
+  @media  (min-width: 30em) {
+    aside {
+      width: 23.7288135593%;
+      float: right;
+      margin-right: 0; } }
+  @media  (min-width: 48em) {
+    aside {
+      width: 32.2033898305%;
+      float: right;
+      margin-right: 0; } }
 
 footer {
   clear: both;
