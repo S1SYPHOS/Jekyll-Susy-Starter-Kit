@@ -1,14 +1,14 @@
 {
-  "name": "Jekyll+Susy_Kit",
+  "name": "jekyll-susy-starter-kit",
   "version": "1.0.0",
   "description": "Jekyll+Susy Starter Kit",
   "author": "S1SYPHOS <hello@daktylos.net>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NAME/REPO"
+    "url": "https://github.com/S1SYPHOS/Jekyll-Susy-Starter-Kit"
   },
   "bugs": {
-    "url": "https://github.com/NAME/REPO/issues"
+    "url": "https://github.com/S1SYPHOS/Jekyll-Susy-Starter-Kit/issues"
   },
   "dependencies": {},
   "devDependencies": {
@@ -28,6 +28,7 @@
     "grunt-dev-update": "^1.3.0",
     "grunt-ftpush": "^0.3.3",
     "grunt-jekyll": "^0.4.2",
+    "grunt-modernizr": "^0.6.0",
     "grunt-processhtml": "^0.3.8",
     "grunt-sass": "^0.18.1",
     "grunt-scss-lint": "^0.3.6",
