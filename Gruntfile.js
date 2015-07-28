@@ -14,9 +14,16 @@ module.exports = function(grunt) {
     jekyll: {
       options: {
         bundleExec: true,
-        config: 'config.yml'
+        config: 'config.yml,config_prod.yml'
       },
-      build: {
+      dev: {
+        options: {
+          config: 'config.yml',
+          src: 'source',
+          dest: 'build'
+        }
+      },
+      prod: {
         options: {
           src: 'source',
           dest: 'build'
@@ -63,11 +70,11 @@ module.exports = function(grunt) {
     watch: {
       sass: {
         files: 'source/_scss/**/*.scss',
-        tasks: ['sass']
+        tasks: ['sass', 'autoprefixer', 'penthouse']
       },
       jekyll: {
         files: ['source/**/*.html', 'source/css/*.css', 'source/js/*.js'],
-        tasks: ['jekyll:build']
+        tasks: ['jekyll:dev', 'modernizr']
       }
     },
 
@@ -85,17 +92,17 @@ module.exports = function(grunt) {
       }
     },
 
-    uncss: {
-      dist: {
-        options: {
-          // ignoreSheets : [/fonts.googleapis/],
-          // ignore: ['.some-selector', '#some-id']
-        },
-        files: {
-          'build/css/style.css': 'build/*.html'
-        }
-      }
-    },
+    // uncss: {
+    //   dist: {
+    //     options: {
+    //       // ignoreSheets : [/fonts.googleapis/],
+    //       // ignore: ['.some-selector', '#some-id']
+    //     },
+    //     files: {
+    //       'build/css/style.css': 'build/*.html'
+    //     }
+    //   }
+    // },
 
     autoprefixer: {
       options: {
@@ -128,6 +135,16 @@ module.exports = function(grunt) {
       }
     },
 
+    penthouse: {
+      dist: {
+        outfile : 'source/_includes/critical.css',
+        css : 'source/css/style.css',
+        url : 'http://localhost:3000',
+        width : 1280,
+        height : 800
+      }
+    },
+
 
     // HTML PROCESSING
 
@@ -145,7 +162,7 @@ module.exports = function(grunt) {
         /* async / defer for generated JS:
         blockReplacements: {
           js: function (block){
-            return '<script async src="' + block.dest + '" defer=defer><\/script>';
+            return '<script async src='' + block.dest + '' defer=defer><\/script>';
           }
         } */
       },
@@ -230,138 +247,68 @@ module.exports = function(grunt) {
       }
     },
 
-
-
-
-
     modernizr: {
       dist: {
-        "devFile" : "bower_components/modernizr/modernizr.js",
-        "outputFile" : "build/js/modernizr-custom.js",
+        'devFile' : 'bower_components/modernizr/modernizr.js',
+        'outputFile' : 'build/js/modernizr-custom.js',
         // Based on default settings on http://modernizr.com/download/
-        "extra" : {
-            "shiv" : true,
-            "printshiv" : false,
-            "load" : true,
-            "mq" : false,
-            "cssclasses" : true
+        'extra' : {
+            'shiv' : true,
+            'printshiv' : false,
+            'load' : true,
+            'mq' : false,
+            'cssclasses' : true
         },
         // Based on default settings on http://modernizr.com/download/
-        "extensibility" : {
-          "addtest" : false,
-          "prefixed" : false,
-          "teststyles" : false,
-          "testprops" : false,
-          "testallprops" : false,
-          "hasevents" : false,
-          "prefixes" : false,
-          "domprefixes" : false,
-          "cssclassprefix": ""
+        'extensibility' : {
+          'addtest' : false,
+          'prefixed' : false,
+          'teststyles' : false,
+          'testprops' : false,
+          'testallprops' : false,
+          'hasevents' : false,
+          'prefixes' : false,
+          'domprefixes' : false,
+          'cssclassprefix': ''
         },
-        // By default, source is uglified before saving
-        "uglify" : true,
-        // Define any tests you want to implicitly include.
-        "tests" : [],
-        // By default, this task will crawl your project for references to Modernizr tests.
-        // Set to false to disable.
-        "parseFiles" : false,
-        // When parseFiles = true, this task will crawl all *.js, *.css, *.scss and *.sass files,
-        // except files that are in node_modules/.
-        // You can override this by defining a "files" array below.
+        'uglify' : true,
+        'parseFiles' : false,
         files: {
           src: [
             'build/js/**/*.js',
             'build/css/style.css',
+            'build/*.html'
           ]
-        },
-        // This handler will be passed an array of all the test names passed to the Modernizr API, and will run after the API call has returned
-        // "handler": function (tests) {},
-
-        // When parseFiles = true, matchCommunityTests = true will attempt to
-        // match user-contributed tests.
-        "matchCommunityTests" : false,
-        // Have custom Modernizr tests? Add paths to their location here.
-        "customTests" : []
         }
       }
+    }
 
-
-
-
-
-
-
-
-      /* UNUSED STUFF
-
-      processhtml: {
-        dist:{
-          options: {
-            process: true,
-          },
-          files: [
-          {
-            expand: true,
-            cwd: 'build',
-            src: ['*.html'],
-            dest: 'build/',
-            ext: '.html'
-          },
-          ],
-        }
-      },
-
-      dataUri: {
-        dist: {
-          src: ['source/css/style.css'],
-          dest: 'source/css',
-          options: {
-            target: ['source/img/*.*'],
-            fixDirLevel: true,
-            maxBytes : 5000
-          }
-        }
-      },
-
-      concurrent: {
-        step1: ['jekyll:serve', 'dev']
-      },
-
-      shell: {
-        gzip: {
-            command: 'gzip -9 build/css/style.css && mv build/css/style.css.gz build/css/style.gz.css'
-        },
-        server: {
-            command: 'cd build && ruby server.rb'
-        }
-      },
-
-*/
-
-    });
+  });
 
     grunt.registerTask('dev', [
       'sass',
-      'jekyll:build',
+      'jekyll:dev',
       'modernizr',
       'browserSync',
     	'watch'
     ]);
 
-    grunt.registerTask('build', [
+    grunt.registerTask('prod', [
       'sass',
-      'jekyll:build',
-      'uncss',
+      'jekyll:prod',
+      // 'uncss',
       'modernizr',
       'autoprefixer',
       'csscomb',
       'cssmin',
-      'useminPrepare',
-      'concat',
-      'uglify',
-      'usemin',
+      // 'useminPrepare',
+      // 'concat',
+      // 'uglify',
+      // 'usemin',
       'cacheBust',
-      'htmlmin'
+      'htmlmin',
+      'browserSync',
+      'watch'
     ]);
 
     grunt.registerTask('check', [

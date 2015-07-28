@@ -8,6 +8,7 @@
   <!--  <link rel="apple-touch-icon" href="apple-touch-icon.png">
         Place favicon.ico in the root directory -->
 
+  <!-- +++ WEBFONTS +++ -->
   <script>
     {% include fontloader.js %}
     loadFont("webfonts", "/css/webfonts.woff.css", "/css/webfonts.woff2.css");
@@ -19,11 +20,21 @@
     <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
   </noscript>
 
-  <!-- build:css css/style.css -->
-  <link href="css/style.css" rel="stylesheet" type="text/css">
-  <!-- /build -->
+  <!-- +++ CSS +++ -->
+  {% if site.environment == 'production' %}
+  <style>{% include critical.css %}</style>
+  <script>
+    {% include loadCSS.js %}
+    loadCSS("/css/style.css");
+  </script>
+  <noscript>
+  {% endif %}
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  {% if site.environment == 'production' %}
+  </noscript>
+  {% endif %}
 
-  <!-- implement grunt-modernizr -->
+  <!-- +++ MODERNIZR +++ -->
   <script type="text/javascript" src="js/modernizr-custom.js"></script>
 
 </head>
