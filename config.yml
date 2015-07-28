@@ -1,10 +1,10 @@
 # MAIN
-title:               Susy_Kit
-tagline:
-description:         Susy_Kit description
+title:               Jekyll-Susy-Starter-Kit
+# description:         Jekyll-Susy-Starter-Kit description
 url:                 http://localhost:3000
 paginate:            1
 baseurl:             /
+environment:        development
 
 # ABOUT / CONTACT
 author:
@@ -12,6 +12,6 @@ author:
   email:             hello@daktylos.net
 
 # MISC
-version:             1.0.0
+version:             0.1.0
 github:
-  repo:              https://github.com/NAME/REPO
+  repo:              https://github.com/S1SYPHOS/Jekyll-Susy-Starter-Kit

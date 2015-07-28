@@ -1,7 +1,6 @@
-// SUSY
-@import "../../bower_components/susy/sass/susy";
-@import "../../bower_components/breakpoint-sass/stylesheets/breakpoint";
-
+// IMPORTS
+@import '../../bower_components/susy/sass/susy';
+@import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
 
 // SUSY-MAP - http://susy.readthedocs.org/en/latest/settings/
 $susy: (
@@ -12,7 +11,7 @@ $susy: (
   container: 90%,
   // container-position: center,
   columns: 12,
-  gutters: .25,
+  gutters: 0.25,
   // column-width: false,
   global-box-sizing: border-box,
   last-flow: to,
@@ -27,14 +26,21 @@ $susy: (
     // background-options: false,
     // box-sizing: true,
     clearfix: true,
-    // rem: true,
+    rem: true,
   )
 );
 
 // CUSTOM CLEARFIX MIXIN
 @mixin clearfix {
-  &:before, &:after { content: " "; display: table; }
-  &:after { clear: both; }
+  &:before,
+  &:after {
+    display: table;
+    content: ' ';
+  }
+
+  &:after {
+    clear: both;
+  }
 }
 
 // BOX-SIZING: BORDER BOX
@@ -51,16 +57,15 @@ html {
 html,
 body {
   height: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 body {
-  background: #fff;
-  color: #000;
   position: relative;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+  color: #000;
+  text-size-adjust: 100%;
+  background: #fff;
 }
 
 a {
@@ -75,9 +80,8 @@ a {
 }
 
 img {
-  max-width: 100%;
   height: auto;
-  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
 }
 
 // MEDIA QUERIES
@@ -85,13 +89,14 @@ $bp-small: 30em;
 $bp-medium: 48em;
 $bp-large: 64em;
 
-
 // JUST SOME LAYOUT
 .container {
   @include container;
 }
 
-header, article, aside {
+header,
+article,
+aside {
   margin-bottom: gutter();
   border: 2px solid #888;
 }
@@ -103,10 +108,6 @@ header {
 article {
   padding: 2em 0;
 
-  h3 {
-    margin-left: span(1 of 8) + gutter(8);
-  }
-
   @include breakpoint($bp-small) {
     @include span(9);
   }
@@ -114,14 +115,14 @@ article {
   @include breakpoint($bp-medium) {
     @include span(8);
   }
+
+  h3 {
+    margin-left: span(1 of 8) + gutter(8);
+  }
 }
 
 aside {
   padding: 2em 0;
-
-  h3 {
-    margin-left: span(1 of 8);
-  }
 
   @include breakpoint($bp-small) {
     @include span(3 last);
@@ -130,19 +131,23 @@ aside {
   @include breakpoint($bp-medium) {
     @include span(4 last);
   }
+
+  h3 {
+    margin-left: span(1 of 8);
+  }
 }
 
 footer {
-    clear: both;
-    padding: 1em;
-    border: 2px solid #888;
+  padding: 1em;
+  clear: both;
+  border: 2px solid #888;
 }
 
 .browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
   padding: 0.2em 0;
+  margin: 0.2em 0;
+  color: #000;
+  background: #ccc;
 }
 
 // INSERT YOUR MAGIC HERE :)

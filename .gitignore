@@ -23,7 +23,7 @@ Thumbs.db
 node_modules
 bower_components
 .tmp
-source/_includes/critical.css
 source/css/style.css
+source/_includes/critical.css
 source/htaccess
 build
