@@ -1,9 +1,9 @@
-'use strict';
-
 module.exports = function(grunt) {
 
-  require('load-grunt-tasks')(grunt);
+  'use strict';
+
   // require('time-grunt')(grunt);
+  require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -110,14 +110,14 @@ module.exports = function(grunt) {
       },
       dist: {
         expand: true,
-        src: 'build/css/style.css'
+        src: '.tmp/concat/css/style.css'
       }
     },
 
     csscomb: {
       dist: {
         files: {
-          'build/css/style.css': 'build/css/style.css'
+          '.tmp/concat/css/style.css': '.tmp/concat/css/style.css'
         }
       }
     },
@@ -128,11 +128,11 @@ module.exports = function(grunt) {
         roundingPrecision: -1,
         // compatibility: 'ie8'
       },
-      dist: {
-        files: {
-          'build/css/style.css': 'build/css/style.css'
-        }
-      }
+      // dist: {
+      //   files: {
+      //     'build/css/style.css': 'build/css/style.css'
+      //   }
+      // }
     },
 
     penthouse: {
@@ -298,13 +298,13 @@ module.exports = function(grunt) {
       'jekyll:prod',
       // 'uncss',
       'modernizr',
+      'useminPrepare',
+      'concat',
       'autoprefixer',
       'csscomb',
       'cssmin',
-      // 'useminPrepare',
-      // 'concat',
-      // 'uglify',
-      // 'usemin',
+      'uglify',
+      'usemin',
       'cacheBust',
       'htmlmin',
       'browserSync',
