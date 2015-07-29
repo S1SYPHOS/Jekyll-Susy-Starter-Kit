@@ -67,6 +67,32 @@ module.exports = function(grunt) {
       }
     },
 
+    useminPrepare: {
+      options: {
+        dest: 'build',
+        // staging: 'source/_tmp'
+      },
+      html: 'build/index.html'
+    },
+
+    usemin: {
+      options: {
+        assetsDirs: 'build',
+        /* async / defer for generated JS - https://github.com/yeoman/grunt-usemin/issues/391
+        blockReplacements: {
+          js: function (block){
+            return '<script async src='' + block.dest + '' defer=defer><\/script>';
+          }
+        } */
+      },
+      html: ['build/**/*.html'],
+      // css: ['build/css/**/*.css'],
+    },
+
+    concat: { },
+
+    uglify: { },
+
     watch: {
       sass: {
         files: 'source/_scss/**/*.scss',
@@ -79,7 +105,7 @@ module.exports = function(grunt) {
     },
 
 
-    // STYLESHEET PROCESSING
+    // STYLESHEET SECTION
 
     sass: {
       options: {
@@ -91,18 +117,6 @@ module.exports = function(grunt) {
         }
       }
     },
-
-    // uncss: {
-    //   dist: {
-    //     options: {
-    //       // ignoreSheets : [/fonts.googleapis/],
-    //       // ignore: ['.some-selector', '#some-id']
-    //     },
-    //     files: {
-    //       'build/css/style.css': 'build/*.html'
-    //     }
-    //   }
-    // },
 
     autoprefixer: {
       options: {
@@ -127,12 +141,7 @@ module.exports = function(grunt) {
         shorthandCompacting: false,
         roundingPrecision: -1,
         // compatibility: 'ie8'
-      },
-      // dist: {
-      //   files: {
-      //     'build/css/style.css': 'build/css/style.css'
-      //   }
-      // }
+      }
     },
 
     penthouse: {
@@ -146,41 +155,25 @@ module.exports = function(grunt) {
     },
 
 
-    // HTML PROCESSING
+    // JAVASCRIPT SECTION
 
-    useminPrepare: {
-      options: {
-        dest: 'build',
-        // staging: 'source/_tmp'
-      },
-      html: 'build/index.html'
+    modernizr: {
+      dist: {
+        'devFile' : 'bower_components/modernizr/modernizr.js',
+        'outputFile' : 'build/js/modernizr-custom.js',
+        'uglify' : true,
+        'parseFiles' : false,
+        files: {
+          src: [
+            'build/js/**/*.js',
+            'build/css/style.css',
+            'build/*.html'
+          ]
+        }
+      }
     },
 
-    usemin: {
-      options: {
-        assetsDirs: 'build',
-        /* async / defer for generated JS:
-        blockReplacements: {
-          js: function (block){
-            return '<script async src='' + block.dest + '' defer=defer><\/script>';
-          }
-        } */
-      },
-      html: ['build/**/*.html'],
-      // css: ['build/css/**/*.css'],
-    },
-
-    concat: {
-      // options: {
-      //   separator: ';'
-      // }
-    },
-
-    uglify: {
-      // options: {
-      //   mangle: false
-      // }
-    },
+    // HTML SECTION
 
     htmlmin: {
       dist: {
@@ -213,12 +206,12 @@ module.exports = function(grunt) {
       assets: {
         files: [{
             src: ['build/**/*.html']
-          }]
-        }
+        }]
+      }
     },
 
 
-    // UP2DATENESS + CODE QUALITY
+    // CODE QUALITY SECTION
 
     scsslint: {
       options: {
@@ -245,43 +238,8 @@ module.exports = function(grunt) {
           updateType: 'prompt'
         }
       }
-    },
-
-    modernizr: {
-      dist: {
-        'devFile' : 'bower_components/modernizr/modernizr.js',
-        'outputFile' : 'build/js/modernizr-custom.js',
-        // Based on default settings on http://modernizr.com/download/
-        'extra' : {
-            'shiv' : true,
-            'printshiv' : false,
-            'load' : true,
-            'mq' : false,
-            'cssclasses' : true
-        },
-        // Based on default settings on http://modernizr.com/download/
-        'extensibility' : {
-          'addtest' : false,
-          'prefixed' : false,
-          'teststyles' : false,
-          'testprops' : false,
-          'testallprops' : false,
-          'hasevents' : false,
-          'prefixes' : false,
-          'domprefixes' : false,
-          'cssclassprefix': ''
-        },
-        'uglify' : true,
-        'parseFiles' : false,
-        files: {
-          src: [
-            'build/js/**/*.js',
-            'build/css/style.css',
-            'build/*.html'
-          ]
-        }
-      }
     }
+
 
   });
 
@@ -295,8 +253,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('prod', [
       'sass',
+      'copycss',
       'jekyll:prod',
-      // 'uncss',
       'modernizr',
       'useminPrepare',
       'concat',
@@ -318,7 +276,7 @@ module.exports = function(grunt) {
       'jshint'
     ]);
 
-    grunt.registerTask('stage', [
+    grunt.registerTask('copycss', [
       'copy:loadCSS',
       'copy:OptimizedWebfontLoading'
     ]);
