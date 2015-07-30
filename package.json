@@ -10,6 +10,11 @@
   "bugs": {
     "url": "https://github.com/S1SYPHOS/Jekyll-Susy-Starter-Kit/issues"
   },
+  "private": true,
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/S1SYPHOS/Jekyll-Susy-Starter-Kit/blob/master/LICENSE.txt"
+},
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -35,7 +40,5 @@
     "load-grunt-tasks": "^3.1.0",
     "node-sass": "^2.1.1",
     "time-grunt": "^1.2.1"
-  },
-  "private": true,
-  "license": "MIT"
+  }
 }
