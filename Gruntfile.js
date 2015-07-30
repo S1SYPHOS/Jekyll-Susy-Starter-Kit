@@ -54,6 +54,17 @@ module.exports = function(grunt) {
       }
     },
 
+    watch: {
+      sass: {
+        files: 'source/_scss/**/*.scss',
+        tasks: ['sass', 'autoprefixer', 'penthouse']
+      },
+      jekyll: {
+        files: ['source/**/*.html', 'source/css/*.css', 'source/js/*.js'],
+        tasks: ['jekyll:dev', 'modernizr']
+      }
+    },
+
     copy: {
       OptimizedWebfontLoading: {
         files: {
@@ -66,6 +77,9 @@ module.exports = function(grunt) {
         }
       }
     },
+
+
+    // USEMIN SECTION
 
     useminPrepare: {
       options: {
@@ -92,17 +106,6 @@ module.exports = function(grunt) {
     concat: { },
 
     uglify: { },
-
-    watch: {
-      sass: {
-        files: 'source/_scss/**/*.scss',
-        tasks: ['sass', 'autoprefixer', 'penthouse']
-      },
-      jekyll: {
-        files: ['source/**/*.html', 'source/css/*.css', 'source/js/*.js'],
-        tasks: ['jekyll:dev', 'modernizr']
-      }
-    },
 
 
     // STYLESHEET SECTION
