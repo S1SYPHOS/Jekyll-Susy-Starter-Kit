@@ -66,7 +66,6 @@ body {
   color: #000;
   text-size-adjust: 100%;
   background: #fff;
-  transform: translate3d(260px, 0, 0); // not supported in IE 9 and below
 }
 
 a {
@@ -94,7 +93,6 @@ $bp-large: 64em;
 $off-canvas-width-2: 300px;
 
 .outer-wrap {
-  position: relative;
   overflow: hidden;
 }
 
@@ -114,16 +112,16 @@ $off-canvas-width-2: 300px;
 
 .off-canvas {
   position: absolute;
-    width: $off-canvas-width-2;
-    left: -$off-canvas-width-2;
-    top: 0;
-    bottom: 0;
+  width: $off-canvas-width-2;
+  left: -$off-canvas-width-2;
+  top: 0;
+  bottom: 0;
 }
 
-li {
-    list-style: none;
-    @include gallery(6);
-  }
+// li {
+//     list-style: none;
+//     @include gallery(6);
+//   }
 
 header,
 article,
