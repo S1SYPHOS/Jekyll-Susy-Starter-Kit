@@ -8,7 +8,7 @@ $susy: (
   // math: fluid,
   // output: float,
   // gutter-position: after,
-  container: 90%,
+  container: 64em,
   // container-position: center,
   columns: 12,
   gutters: 0.25,
@@ -90,9 +90,38 @@ $bp-medium: 48em;
 $bp-large: 64em;
 
 // JUST SOME LAYOUT
-.container {
-  @include container;
+$off-canvas-width-2: 300px;
+
+.outer-wrap {
+  overflow: hidden;
 }
+
+.inner-wrap {
+  backface-visibility: hidden;
+  transition: transform 0.3s ease;
+  &.is-open {
+    transform: translate3d($off-canvas-width-2, 0, 0);
+  }
+}
+
+.container {
+  @include container();
+  padding-left: gutter();
+  padding-right: gutter();
+}
+
+.off-canvas {
+  position: absolute;
+  width: $off-canvas-width-2;
+  left: -$off-canvas-width-2;
+  top: 0;
+  bottom: 0;
+}
+
+// li {
+//     list-style: none;
+//     @include gallery(6);
+//   }
 
 header,
 article,
