@@ -94,6 +94,14 @@ $bp-large: 64em;
   @include container;
 }
 
+.off-canvas {
+  position: absolute;
+  width: 250px;
+  left: -250px;
+  top: 0;
+  bottom: 0;
+}
+
 header,
 article,
 aside {
