@@ -66,6 +66,7 @@ body {
   color: #000;
   text-size-adjust: 100%;
   background: #fff;
+  transform: translate3d(260px, 0, 0); // not supported in IE 9 and below
 }
 
 a {
@@ -100,6 +101,7 @@ $bp-large: 64em;
   left: -250px;
   top: 0;
   bottom: 0;
+  transform: translate3d(260px,0,0); // not supported in IE 9 and below
 }
 
 header,
