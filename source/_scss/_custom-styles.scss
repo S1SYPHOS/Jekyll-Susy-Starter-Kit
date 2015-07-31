@@ -91,6 +91,14 @@ $bp-medium: 48em;
 $bp-large: 64em;
 
 // JUST SOME LAYOUT
+.outer-wrap {
+  overflow: hidden;
+}
+
+.inner-wrap.--is-open {
+  transform: translate3d(260px, 0, 0); 
+}
+
 .container {
   @include container;
 }
