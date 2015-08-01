@@ -1,11 +1,15 @@
-// Insert your JS MAGIC HERE :)
 jQuery(document).ready(function($) {
-  var $transformer = $('.inner-wrap'),
-  $menuToggle = $('.menu-toggle');
+  var $inner_wrap = $('.inner-wrap');
 
-  // Attaches event handler when .menu-toggle is clicked
-  $menuToggle.on('click', function(event) {
+  $('.off-canvas-toggle__button').on('click', function(event) {
     event.preventDefault();
-    $transformer.toggleClass('is-open');
+    $inner_wrap.toggleClass('is-open');
+  });
+
+  $('.off-canvas--close').on('click',function(event){
+    event.preventDefault();
+    $inner_wrap.removeClass('is-open');
   });
 });
+
+// Insert your JS MAGIC HERE :)
