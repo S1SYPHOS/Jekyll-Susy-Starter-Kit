@@ -19,14 +19,14 @@ $susy: (
     image: show-columns,
     // color: rgba(#66f, .25),
     // output: background,
-    toggle: bottom left,
+    // toggle: bottom left,
   ),
   use-custom: (
     // background-image: true,
     // background-options: false,
     // box-sizing: true,
     clearfix: true,
-    rem: true,
+    // rem: true,
   )
 );
 
@@ -49,17 +49,15 @@ $susy: (
 // DEFAULT STYLES
 html {
   font-family: "PT Sans", sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  cursor: auto;
+  line-height: 1.5;
 }
 
 html,
 body {
-  font-size:100%;
   height: 100%;
   padding: 0;
   margin: 0;
+  font-size: 100%;
 }
 
 body {
@@ -103,8 +101,9 @@ $off-canvas-width: 250px;
 }
 
 .inner-wrap {
-  backface-visibility: hidden;
   transition: transform 0.3s ease;
+  backface-visibility: hidden;
+
   &.is-open {
     transform: translate3d($off-canvas-width, 0, 0);
   }
@@ -112,31 +111,31 @@ $off-canvas-width: 250px;
 
 .off-canvas {
   position: absolute;
-  width: $off-canvas-width;
-  left: -$off-canvas-width;
   top: 0;
   bottom: 0;
-  transition: transform 500ms ease 0s;
+  left: -$off-canvas-width;
+  width: $off-canvas-width;
   background: #333333;
+  transition: transform 500ms ease 0s;
 }
 
 .off-canvas-list {
-  margin: 0;
   padding: 0;
+  margin: 0;
   list-style-type: none;
 }
 
 .off-canvas-list__item a {
   display: block;
-  transition: #DEDEDE 300ms ease 0s;
   padding: 0.7rem;
-  color: rgba(255,255,255,.7);
+  color: rgba(255, 255, 255, 0.7);
   border-bottom: 1px solid #262626;
+  transition: #dedede 300ms ease 0s;
 
   &:active,
   &:hover {
-    background: #242424;
     text-decoration: none;
+    background: #242424;
   }
 }
 
@@ -157,34 +156,18 @@ header {
 }
 
 article {
-  padding: 2em 0;
-
-  @include breakpoint($bp-small) {
-    @include span(9);
-  }
+  padding: 2em;
 
   @include breakpoint($bp-medium) {
     @include span(8);
   }
-
-  h3 {
-    margin-left: span(1 of 8) + gutter(8);
-  }
 }
 
 aside {
-  padding: 2em 0;
-
-  @include breakpoint($bp-small) {
-    @include span(3 last);
-  }
+  padding: 2em;
 
   @include breakpoint($bp-medium) {
     @include span(4 last);
-  }
-
-  h3 {
-    margin-left: span(1 of 8);
   }
 }
 
