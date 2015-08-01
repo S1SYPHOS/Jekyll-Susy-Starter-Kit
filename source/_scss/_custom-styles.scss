@@ -19,7 +19,7 @@ $susy: (
     image: show-columns,
     // color: rgba(#66f, .25),
     // output: background,
-    // toggle: top right,
+    toggle: bottom left,
   ),
   use-custom: (
     // background-image: true,
@@ -48,14 +48,15 @@ $susy: (
 
 // DEFAULT STYLES
 html {
-  font-family: sans-serif;
+  font-family: "PT Sans", sans-serif;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
   cursor: auto;
 }
 
 html,
 body {
+  font-size:100%;
   height: 100%;
   padding: 0;
   margin: 0;
@@ -89,8 +90,13 @@ $bp-small: 30em;
 $bp-medium: 48em;
 $bp-large: 64em;
 
-// JUST SOME LAYOUT
-$off-canvas-width-2: 300px;
+// OFF-CANVAS-NAVIGATION
+$off-canvas-width: 250px;
+
+.outer-wrap,
+.inner-wrap {
+  height: 100%;
+}
 
 .outer-wrap {
   overflow: hidden;
@@ -100,28 +106,44 @@ $off-canvas-width-2: 300px;
   backface-visibility: hidden;
   transition: transform 0.3s ease;
   &.is-open {
-    transform: translate3d($off-canvas-width-2, 0, 0);
+    transform: translate3d($off-canvas-width, 0, 0);
   }
-}
-
-.container {
-  @include container();
-  padding-left: gutter();
-  padding-right: gutter();
 }
 
 .off-canvas {
   position: absolute;
-  width: $off-canvas-width-2;
-  left: -$off-canvas-width-2;
+  width: $off-canvas-width;
+  left: -$off-canvas-width;
   top: 0;
   bottom: 0;
+  transition: transform 500ms ease 0s;
+  background: #333333;
 }
 
-// li {
-//     list-style: none;
-//     @include gallery(6);
-//   }
+.off-canvas-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.off-canvas-list__item a {
+  display: block;
+  transition: #DEDEDE 300ms ease 0s;
+  padding: 0.7rem;
+  color: rgba(255,255,255,.7);
+  border-bottom: 1px solid #262626;
+
+  &:active,
+  &:hover {
+    background: #242424;
+    text-decoration: none;
+  }
+}
+
+// JUST SOME LAYOUT
+.container {
+  @include container;
+}
 
 header,
 article,
