@@ -30,7 +30,7 @@ Now it's time to install the project's dependencies:
 Everything's ready to get started right away - here's my Grunt workflow:
 - `grunt dev`: Compiles SASS, builds the site and opens it in the default browser, watches for changes and injects them right away.
 - `grunt prod`: Builds a bleeding edge website into the `build` directory.
-- `grunt check`: Checks code quality of SASS and JS files and also for outdated packages.
+- `grunt check`: Checks code quality of SASS and JS files, Jekyll health and also for outdated packages.
 
 ## Special Thanks
 I'd like to thank everybody that's making great software - you people are awesome.
