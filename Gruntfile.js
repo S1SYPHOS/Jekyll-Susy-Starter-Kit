@@ -75,7 +75,17 @@ module.exports = function(grunt) {
         files: {
           'source/_includes/loadCSS.js': 'bower_components/loadcss/loadCSS.js'
         }
-      }
+      },
+      jQuery: {
+        files: {
+          'source/js/vendor/jquery.min.js': 'bower_components/jquery/dist/jquery.min.js'
+        }
+      },
+      normalize: {
+        files: {
+          'source/_scss/_normalize.scss': 'bower_components/normalize.css/normalize.css'
+        }
+      },
     },
 
 
@@ -112,7 +122,8 @@ module.exports = function(grunt) {
 
     sass: {
       options: {
-        includePaths: ['bower_components/normalize.css']
+        // includePaths: ['some/other/path']
+        require: 'susy'
       },
       dist: {
         files: {
@@ -222,7 +233,7 @@ module.exports = function(grunt) {
         bundleExec: true,
         colorizeOutput: true,
         config: '.scss-lint.yml',
-        // exclude: ['path/to/file.scss']
+        exclude: ['source/_scss/_normalize.scss']
       },
       check: 'source/_scss/**/*.scss'
     },
@@ -257,7 +268,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('prod', [
       'sass',
-      'copycss',
+      'copy',
       'jekyll:prod',
       'modernizr',
       'useminPrepare',
@@ -268,9 +279,7 @@ module.exports = function(grunt) {
       'uglify',
       'usemin',
       'cacheBust',
-      'htmlmin',
-      'browserSync',
-      'watch'
+      'htmlmin'
     ]);
 
     grunt.registerTask('check', [
@@ -278,11 +287,6 @@ module.exports = function(grunt) {
       'jekyll:check',
       'scsslint',
       'jshint'
-    ]);
-
-    grunt.registerTask('copycss', [
-      'copy:loadCSS',
-      'copy:OptimizedWebfontLoading'
     ]);
 
   };

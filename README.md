@@ -1,10 +1,12 @@
 # Jekyll-Susy-Starter-Kit
+**You heard about Susy and want to use it on your next project? You also love Jekyll and don't want to miss it? Then THIS is for you!**
 
 Here's my personal Jekyll+Susy-Starter-Kit - starring:
 + [Jekyll](http://jekyllrb.com/) - a blog-aware, static site generator.
 + [Susy](http://susy.oddbird.net/) - a sass grid framework.
 
 ## The Stack
+All you need to get started:
 - [Ruby](http://www.ruby-lang.org/): Required for Jekyll.
 - [Node.js](http://nodejs.org/) and [NPM](https://npmjs.org/): Required for Grunt & Grunt-plugins.
 - [Grunt](http://gruntjs.com/): Automates development.
@@ -19,10 +21,16 @@ Here's my personal Jekyll+Susy-Starter-Kit - starring:
 - Install [Bundler](http://bundler.io/): `gem install bundler`
 
 ## The Dependencies
-- Install dependencies:
-  - NPM: `npm cache clean` then `npm install`
-  - Bower: `bower install`
-  - Bundler: `bundle install`
+Now it's time to install the project's dependencies:
+- NPM: `npm cache clean && npm install`
+- Bower: `bower install`
+- Bundler: `bundle install`
 
 ## The Grunt
-... to be continued ...
+Everything's ready to get started right away - here's my Grunt workflow:
+- `grunt dev`: Compiles SASS, builds the site and opens it in the default browser, watches for changes and injects them right away.
+- `grunt prod`: Builds a bleeding edge website into the `build` directory.
+- `grunt check`: Checks code quality of SASS and JS files and also for outdated packages.
+
+## Special Thanks
+I'd like to thank everybody that's making great software - you people are awesome.
