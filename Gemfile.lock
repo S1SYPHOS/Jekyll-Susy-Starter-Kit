@@ -72,9 +72,8 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 2.5.3)
-  kramdown
   sass (~> 3.4.16)
   scss_lint (~> 0.40.1)
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
