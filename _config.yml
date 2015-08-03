@@ -4,6 +4,8 @@ title:               Jekyll-Susy-Starter-Kit
 url:                 http://localhost:3000
 paginate:            1
 baseurl:             /
+source:             source
+destination:        build
 environment:        development
 
 # ABOUT / CONTACT

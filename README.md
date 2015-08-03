@@ -32,5 +32,7 @@ Everything's ready to get started right away - here's my Grunt workflow:
 - `grunt prod`: Builds a bleeding edge website into the `build` directory.
 - `grunt check`: Checks code quality of SASS and JS files, Jekyll health and also for outdated packages.
 
+**It's possible to get started even quicker - with `bundle exec jekyll serve`**
+
 ## Special Thanks
 I'd like to thank everybody that's making great software - you people are awesome.

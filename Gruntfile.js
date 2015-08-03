@@ -20,11 +20,11 @@ module.exports = function(grunt) {
     jekyll: {
       options: {
         bundleExec: true,
-        config: 'config.yml,config_prod.yml'
+        config: '_config.yml,_config_prod.yml'
       },
       dev: {
         options: {
-          config: 'config.yml',
+          config: '_config.yml',
           src: '<%= config.source %>',
           dest: '<%= config.dest %>'
         }
