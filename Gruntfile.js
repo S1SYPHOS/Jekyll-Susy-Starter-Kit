@@ -8,6 +8,12 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
+    // CONFIGURABLE PATHS
+    config: {
+      source: 'source',
+      dest: 'build'
+    },
+
 
     // GENERAL TASKS
 
@@ -19,14 +25,14 @@ module.exports = function(grunt) {
       dev: {
         options: {
           config: 'config.yml',
-          src: 'source',
-          dest: 'build'
+          src: '<%= config.source %>',
+          dest: '<%= config.dest %>'
         }
       },
       prod: {
         options: {
-          src: 'source',
-          dest: 'build'
+          src: '<%= config.source %>',
+          dest: '<%= config.dest %>'
         }
       },
       check: {
@@ -40,15 +46,15 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src : [
-            'build/css/*.css',
-            'build/js/*.js',
-            'build/*.html'
+            '<%= config.dest %>/css/*.css',
+            '<%= config.dest %>/js/*.js',
+            '<%= config.dest %>/*.html'
           ]
         },
         options: {
           watchTask: true,
           server: {
-            baseDir: 'build'
+            baseDir: '<%= config.dest %>'
           }
         }
       }
@@ -56,11 +62,11 @@ module.exports = function(grunt) {
 
     watch: {
       sass: {
-        files: 'source/_scss/**/*.scss',
+        files: '<%= config.source %>/_scss/**/*.scss',
         tasks: ['sass', 'autoprefixer', 'penthouse']
       },
       jekyll: {
-        files: ['source/**/*.html', 'source/css/*.css', 'source/js/*.js'],
+        files: ['<%= config.source %>/**/*.html', '<%= config.source %>/css/*.css', '<%= config.source %>/js/*.js'],
         tasks: ['jekyll:dev', 'modernizr']
       }
     },
@@ -68,22 +74,22 @@ module.exports = function(grunt) {
     copy: {
       OptimizedWebfontLoading: {
         files: {
-          'source/_includes/fontloader.js': 'bower_components/OptimizedWebfontLoading/build/fontloader.js'
+          '<%= config.source %>/_includes/fontloader.js': 'bower_components/OptimizedWebfontLoading/build/fontloader.js'
         }
       },
       loadCSS: {
         files: {
-          'source/_includes/loadCSS.js': 'bower_components/loadcss/loadCSS.js'
+          '<%= config.source %>/_includes/loadCSS.js': 'bower_components/loadcss/loadCSS.js'
         }
       },
       jQuery: {
         files: {
-          'source/js/vendor/jquery.min.js': 'bower_components/jquery/dist/jquery.min.js'
+          '<%= config.source %>/js/vendor/jquery.js': 'bower_components/jquery/dist/jquery.js'
         }
       },
       normalize: {
         files: {
-          'source/_scss/_normalize.scss': 'bower_components/normalize.css/normalize.css'
+          '<%= config.source %>/_scss/vendor/_normalize.scss': 'bower_components/normalize.css/normalize.css'
         }
       },
     },
@@ -93,15 +99,15 @@ module.exports = function(grunt) {
 
     useminPrepare: {
       options: {
-        dest: 'build',
-        // staging: 'source/_tmp'
+        dest: '<%= config.dest %>',
+        // staging: '<%= config.source %>/_tmp'
       },
-      html: 'build/index.html'
+      html: '<%= config.dest %>/index.html'
     },
 
     usemin: {
       options: {
-        assetsDirs: 'build',
+        assetsDirs: '<%= config.dest %>',
         /* async / defer for generated JS - https://github.com/yeoman/grunt-usemin/issues/391
         blockReplacements: {
           js: function (block){
@@ -109,8 +115,8 @@ module.exports = function(grunt) {
           }
         } */
       },
-      html: ['build/**/*.html'],
-      // css: ['build/css/**/*.css'],
+      html: ['<%= config.dest %>/**/*.html'],
+      // css: ['<%= config.dest %>/css/**/*.css'],
     },
 
     concat: { },
@@ -127,7 +133,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'source/css/style.css': 'source/_scss/style.scss'
+          '<%= config.source %>/css/style.css': '<%= config.source %>/_scss/style.scss'
         }
       }
     },
@@ -160,8 +166,8 @@ module.exports = function(grunt) {
 
     penthouse: {
       dist: {
-        outfile : 'source/_includes/critical.css',
-        css : 'source/css/style.css',
+        outfile : '<%= config.source %>/_includes/critical.css',
+        css : '<%= config.source %>/css/style.css',
         url : 'http://localhost:3000',
         width : 1280,
         height : 800
@@ -174,14 +180,14 @@ module.exports = function(grunt) {
     modernizr: {
       dist: {
         'devFile' : 'bower_components/modernizr/modernizr.js',
-        'outputFile' : 'build/js/modernizr-custom.js',
+        'outputFile' : '<%= config.dest %>/js/modernizr-custom.js',
         'uglify' : true,
         'parseFiles' : false,
         files: {
           src: [
-            'build/js/**/*.js',
-            'build/css/style.css',
-            'build/*.html'
+            '<%= config.dest %>/js/**/*.js',
+            '<%= config.dest %>/css/style.css',
+            '<%= config.dest %>/*.html'
           ]
         }
       }
@@ -202,9 +208,9 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'build',
+          cwd: '<%= config.dest %>',
           src: '**/*.html',
-          dest: 'build'
+          dest: '<%= config.dest %>'
         }]
       }
     },
@@ -216,11 +222,11 @@ module.exports = function(grunt) {
         length: 8,
         deleteOriginals: true,
         // ignorePatterns: ['.png', '.jpg', '.ico'],
-        baseDir: 'build'
+        baseDir: '<%= config.dest %>'
       },
       assets: {
         files: [{
-            src: ['build/**/*.html']
+            src: ['<%= config.dest %>/**/*.html']
         }]
       }
     },
@@ -233,9 +239,9 @@ module.exports = function(grunt) {
         bundleExec: true,
         colorizeOutput: true,
         config: '.scss-lint.yml',
-        exclude: ['source/_scss/_normalize.scss']
+        exclude: ['<%= config.source %>/_scss/_normalize.scss']
       },
-      check: 'source/_scss/**/*.scss'
+      check: '<%= config.source %>/_scss/**/*.scss'
     },
 
     jshint: {
@@ -243,7 +249,7 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc',
         reporter: require('jshint-stylish')
       },
-      check: ['Gruntfile.js', 'source/js/*.js'],
+      check: ['Gruntfile.js', '<%= config.source %>/js/*.js'],
     },
 
     devUpdate: {
