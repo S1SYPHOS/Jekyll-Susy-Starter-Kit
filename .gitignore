@@ -22,6 +22,7 @@ Thumbs.db
 *.zip
 node_modules
 bower_components
+Gemfile.lock
 .tmp
 source/css/style.css
 source/_includes/critical.css
