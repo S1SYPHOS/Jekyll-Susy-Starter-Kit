@@ -129,7 +129,6 @@ module.exports = function(grunt) {
     sass: {
       options: {
         // includePaths: ['some/other/path']
-        require: 'susy'
       },
       dist: {
         files: {
@@ -274,7 +273,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('prod', [
       'sass',
-      'copy',
       'jekyll:prod',
       'modernizr',
       'useminPrepare',
