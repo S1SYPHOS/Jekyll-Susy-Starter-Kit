@@ -35,4 +35,4 @@ Everything's ready to get started right away - here's my Grunt workflow:
 **It's possible to get started even quicker - with `bundle exec jekyll serve`**
 
 ## Special Thanks
-I'd like to thank everybody that's making great software - you people are awesome.
+I'd like to thank everybody that's making great software - you people are awesome. Also I'm always thankful for feedback and bug reports :)
