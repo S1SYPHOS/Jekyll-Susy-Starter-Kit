@@ -238,9 +238,8 @@ module.exports = function(grunt) {
         bundleExec: true,
         colorizeOutput: true,
         config: '.scss-lint.yml',
-        exclude: ['<%= config.source %>/_scss/_normalize.scss']
       },
-      check: '<%= config.source %>/_scss/**/*.scss'
+      check: '<%= config.source %>/_scss/*.scss'
     },
 
     jshint: {
