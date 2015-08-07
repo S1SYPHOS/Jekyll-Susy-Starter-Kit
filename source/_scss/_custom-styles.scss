@@ -13,7 +13,7 @@ $susy: (
   columns: 12,
   gutters: 0.25,
   // column-width: false,
-  global-box-sizing: border-box,
+  // global-box-sizing: content-box,
   last-flow: to,
   debug: (
     image: show-columns,
@@ -43,14 +43,14 @@ $susy: (
   }
 }
 
-// BOX-SIZING: BORDER BOX
-@include border-box-sizing;
-
 // DEFAULT STYLES
 html {
   font-family: "PT Sans", sans-serif;
   line-height: 1.5;
-}
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
 
 html,
 body {
