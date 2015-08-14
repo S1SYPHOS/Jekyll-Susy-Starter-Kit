@@ -48,7 +48,8 @@ module.exports = function(grunt) {
           src : [
             '<%= config.dest %>/css/*.css',
             '<%= config.dest %>/js/*.js',
-            '<%= config.dest %>/*.html'
+            '<%= config.dest %>/*.html',
+            '<%= config.source %>/img/**/*.{jpg,png,svg,gif}'
           ]
         },
         options: {
@@ -63,11 +64,11 @@ module.exports = function(grunt) {
     watch: {
       sass: {
         files: '<%= config.source %>/_scss/**/*.scss',
-        tasks: ['sass', 'postcss', 'penthouse']
+        tasks: ['sass', 'postcss:dev', 'penthouse']
       },
       jekyll: {
         files: ['<%= config.source %>/**/*.html', '<%= config.source %>/css/*.css', '<%= config.source %>/js/*.js'],
-        tasks: ['jekyll:dev', 'modernizr']
+        tasks: ['jekyll:dev']
       }
     },
 
@@ -132,7 +133,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          '<%= config.source %>/css/style.css': '<%= config.source %>/_scss/style.scss'
+          '.tmp/css/style.css': '<%= config.source %>/_scss/style.scss'
         }
       }
     },
@@ -141,11 +142,15 @@ module.exports = function(grunt) {
       options: {
         map: false,
         processors: [
-          require('autoprefixer-core')({browsers: 'last 2 versions, > 5%, ie >= 8'})
+          require('autoprefixer-core')({browsers: 'last 2 versions, > 2%, ie >= 8, Firefox ESR, Opera 12.1'})
         ]
       },
-      dist: {
+      prod: {
         src: '.tmp/concat/css/style.css'
+      },
+      dev: {
+        src: '.tmp/css/style.css',
+        dest: '<%= config.dest %>/css/style.css'
       }
     },
 
@@ -168,7 +173,7 @@ module.exports = function(grunt) {
     penthouse: {
       dist: {
         outfile : '<%= config.source %>/_includes/critical.css',
-        css : '<%= config.source %>/css/style.css',
+        css : '<%= config.dest %>/css/style.css',
         url : 'http://localhost:3000',
         width : 1280,
         height : 800
