@@ -46,9 +46,9 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src : [
+            '<%= config.dest %>/*.html',
             '<%= config.dest %>/css/*.css',
             '<%= config.dest %>/js/*.js',
-            '<%= config.dest %>/*.html',
             '<%= config.source %>/img/**/*.{jpg,png,svg,gif}'
           ]
         },
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
         tasks: ['sass', 'postcss:dev', 'penthouse']
       },
       jekyll: {
-        files: ['<%= config.source %>/**/*.html', '<%= config.source %>/css/*.css', '<%= config.source %>/js/*.js'],
+        files: ['Gruntfile.js', '<%= config.source %>/**/*.{html,md}'],
         tasks: ['jekyll:dev']
       }
     },
@@ -145,12 +145,12 @@ module.exports = function(grunt) {
           require('autoprefixer-core')({browsers: 'last 2 versions, > 2%, ie >= 8, Firefox ESR, Opera 12.1'})
         ]
       },
-      prod: {
-        src: '.tmp/concat/css/style.css'
-      },
       dev: {
         src: '.tmp/css/style.css',
         dest: '<%= config.dest %>/css/style.css'
+      },
+      prod: {
+        src: '.tmp/concat/css/style.css'
       }
     },
 
@@ -272,7 +272,7 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', [
       'sass',
       'jekyll:dev',
-      'modernizr',
+      'postcss:dev',
       'browserSync',
     	'watch'
     ]);
@@ -283,7 +283,7 @@ module.exports = function(grunt) {
       'modernizr',
       'useminPrepare',
       'concat',
-      'postcss',
+      'postcss:prod',
       'csscomb',
       'cssmin',
       'uglify',
