@@ -142,7 +142,8 @@ module.exports = function(grunt) {
       options: {
         map: false,
         processors: [
-          require('autoprefixer-core')({browsers: 'last 2 versions, > 2%, ie >= 8, Firefox ESR, Opera 12.1'})
+          require('autoprefixer-core')({browsers: 'last 2 versions, > 2%, ie >= 8, Firefox ESR, Opera 12.1'}),
+          require('css-mqpacker')()
         ]
       },
       dev: {
