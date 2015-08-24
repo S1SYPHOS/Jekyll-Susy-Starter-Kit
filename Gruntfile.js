@@ -67,7 +67,7 @@ module.exports = function(grunt) {
         tasks: ['sass', 'postcss:dev', 'penthouse']
       },
       jekyll: {
-        files: ['Gruntfile.js', '<%= config.source %>/**/*.{html,md}'],
+        files: ['Gruntfile.js', '<%= config.source %>/**/*.{html,md,js}'],
         tasks: ['jekyll:dev']
       }
     },
@@ -174,7 +174,7 @@ module.exports = function(grunt) {
     penthouse: {
       dist: {
         outfile : '<%= config.source %>/_includes/critical.css',
-        css : '<%= config.dest %>/css/style.css',
+        css : '.tmp/css/style.css',
         url : 'http://localhost:3000',
         width : 1280,
         height : 800
