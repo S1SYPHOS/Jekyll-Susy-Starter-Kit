@@ -7,11 +7,11 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "susy": "~2.2.5",
+    "susy": "~2.2.6",
     "jquery": "~2.1.4"
   },
   "devDependencies": {
-    "loadcss": "~0.1.7",
+    "loadcss": "~0.1.8",
     "OptimizedWebfontLoading": "git://github.com/bdadam/OptimizedWebfontLoading.git",
     "normalize.css": "latest",
     "breakpoint-sass": "~2.6.1"
