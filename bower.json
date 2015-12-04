@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "susy": "~2.2.6",
+    "susy": "~2.2.7",
     "jquery": "~2.1.4"
   },
   "devDependencies": {
