@@ -142,7 +142,7 @@ module.exports = function(grunt) {
       options: {
         map: false,
         processors: [
-          require('autoprefixer-core')({browsers: 'last 2 versions, > 2%, ie >= 8, Firefox ESR, Opera 12.1'}),
+          require('autoprefixer')({browsers: 'last 2 versions, > 2%, ie >= 8, Firefox ESR, Opera 12.1'}),
           require('css-mqpacker')()
         ]
       },
@@ -223,18 +223,15 @@ module.exports = function(grunt) {
     },
 
     cacheBust: {
-      options: {
-        encoding: 'utf8',
-        algorithm: 'md5',
-        length: 8,
-        deleteOriginals: true,
-        // ignorePatterns: ['.png', '.jpg', '.ico'],
-        baseDir: '<%= config.dest %>'
-      },
       assets: {
-        files: [{
-            src: ['<%= config.dest %>/**/*.html']
-        }]
+        options: {
+          length: 8,
+          deleteOriginals: true,
+          // ignorePatterns: ['.png', '.jpg', '.ico'],
+          baseDir: '<%= config.dest %>',
+          assets: ['css/*', 'js/*']
+        },
+        src: ['<%= config.dest %>/**/*.html']
       }
     },
 
