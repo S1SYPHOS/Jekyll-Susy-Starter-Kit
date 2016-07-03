@@ -19,3 +19,6 @@ author:
 version:             1.0.0
 github:
   repo:              https://github.com/S1SYPHOS/Jekyll-Susy-Starter-Kit
+
+# GEMS
+gems:                [jekyll-paginate]
