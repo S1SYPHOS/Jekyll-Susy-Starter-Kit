@@ -1,3 +1,4 @@
+# List of Gems used for Jekyll-Susy-Starter-Kit
 source "https://rubygems.org"
 
 gem "jekyll"
