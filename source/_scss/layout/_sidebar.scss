@@ -1,0 +1,9 @@
+// SIDEBAR STYLES
+
+aside {
+  padding: $base-padding;
+
+  @include susy-media($bp-medium) {
+    @include span(1 last);
+  }
+}

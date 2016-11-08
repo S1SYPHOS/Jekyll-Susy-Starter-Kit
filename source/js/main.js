@@ -1,14 +1,16 @@
-jQuery(document).ready(function($) {
-  var $inner_wrap = $('.inner-wrap');
+document.addEventListener('DOMContentLoaded', function() {
+  // simple JS feature detection
+  var className, html;
+  html = document.documentElement;
+  className = html.className.replace('no-js', 'js');
+  html.className = className;
 
-  $('.off-canvas-toggle__button').on('click', function(event) {
-    event.preventDefault();
-    $inner_wrap.toggleClass('is-open');
-  });
-
-  $('.off-canvas--close').on('click',function(event){
-    event.preventDefault();
-    $inner_wrap.removeClass('is-open');
+  // off-canvas-navigation
+  var toggle = document.getElementById('toggle');
+  toggle.addEventListener('click', function(e) {
+    e.preventDefault();
+    var innerWrap = document.querySelector('.inner-wrap');
+    innerWrap.classList.toggle('is-open');
   });
 });
 

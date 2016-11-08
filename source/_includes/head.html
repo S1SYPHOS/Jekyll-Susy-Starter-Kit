@@ -1,24 +1,12 @@
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{{ page.title }} - {{ site.title }}</title>
-  <meta name="description" content="{{ site.descripton }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!--  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        Place favicon.ico in the root directory -->
+  <title>{{ page.title }} - {{ site.title }}</title>
 
   <!-- +++ WEBFONTS +++ -->
-  <script>
-    {% include fontloader.js %}
-    loadFont("webfonts", "/css/webfonts.woff.css", "/css/webfonts.woff2.css");
-  </script>
-  <!--[if lt IE 9 ]>
-  <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-  <![endif]-->
-  <noscript>
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-  </noscript>
+
 
   <!-- +++ CSS +++ -->
   {% if site.environment == 'production' %}
@@ -29,14 +17,13 @@
   </script>
   <noscript>
   {% endif %}
-   <!-- build:css(source) css/style.css -->
+   <!-- build:css(source) /css/style.css -->
   <link href="css/style.css" rel="stylesheet" type="text/css">
    <!-- endbuild -->
   {% if site.environment == 'production' %}
   </noscript>
   {% endif %}
 
-  <!-- +++ MODERNIZR +++ -->
-  <script type="text/javascript" src="js/modernizr-custom.js"></script>
+  {% seo title=false %}
 
 </head>

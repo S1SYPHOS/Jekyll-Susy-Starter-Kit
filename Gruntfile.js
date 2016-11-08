@@ -73,26 +73,11 @@ module.exports = function(grunt) {
     },
 
     copy: {
-      OptimizedWebfontLoading: {
-        files: {
-          '<%= config.source %>/_includes/fontloader.js': 'bower_components/OptimizedWebfontLoading/build/fontloader.js'
-        }
-      },
       loadCSS: {
         files: {
           '<%= config.source %>/_includes/loadCSS.js': 'bower_components/loadcss/loadCSS.js'
         }
-      },
-      jQuery: {
-        files: {
-          '<%= config.source %>/js/vendor/jquery.js': 'bower_components/jquery/dist/jquery.js'
-        }
-      },
-      normalize: {
-        files: {
-          '<%= config.source %>/_scss/vendor/_normalize.scss': 'bower_components/normalize.css/normalize.css'
-        }
-      },
+      }
     },
 
 
@@ -129,7 +114,7 @@ module.exports = function(grunt) {
 
     sass: {
       options: {
-        // includePaths: ['some/other/path']
+        includePaths: ['node_modules/susy/sass']
       },
       dist: {
         files: {
@@ -178,25 +163,6 @@ module.exports = function(grunt) {
         url : 'http://localhost:3000',
         width : 1280,
         height : 800
-      }
-    },
-
-
-    // JAVASCRIPT SECTION
-
-    modernizr: {
-      dist: {
-        'devFile' : 'bower_components/modernizr/modernizr.js',
-        'outputFile' : '<%= config.dest %>/js/modernizr-custom.js',
-        'uglify' : true,
-        'parseFiles' : false,
-        files: {
-          src: [
-            '<%= config.dest %>/js/**/*.js',
-            '<%= config.dest %>/css/style.css',
-            '<%= config.dest %>/*.html'
-          ]
-        }
       }
     },
 
@@ -278,7 +244,6 @@ module.exports = function(grunt) {
     grunt.registerTask('prod', [
       'sass',
       'jekyll:prod',
-      'modernizr',
       'useminPrepare',
       'concat',
       'postcss:prod',
@@ -291,10 +256,10 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('check', [
-      'devUpdate',
       'jekyll:check',
+      'jshint',
       'scsslint',
-      'jshint'
+      'devUpdate'
     ]);
 
   };

@@ -1,0 +1,19 @@
+// CONTENT STYLES
+
+.wrap {
+  @include container;
+  @include pad($base-padding);
+}
+
+main {
+  padding: $base-padding * 2 0;
+  background-color: $amber;
+}
+
+article {
+  padding: $base-padding;
+
+  @include susy-media($bp-medium) {
+    @include span(3);
+  }
+}

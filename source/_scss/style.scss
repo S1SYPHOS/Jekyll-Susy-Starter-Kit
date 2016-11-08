@@ -1,10 +1,15 @@
 @charset 'UTF-8';
 
-// NORMALIZE
-@import 'vendor/normalize';
-
-// OFF-CANVAS-NAVIGATION
-@import 'base/off-canvas';
-
-// CUSTOM STYLES
-@import 'custom-styles';
+// IMPORT ALL THEM FILES
+@import
+  'susy',
+  'base/susy-map',
+  'base/variables',
+  'base/globals',
+  'layout/header',
+  'layout/content',
+  'layout/sidebar',
+  'layout/footer',
+  'modules/off-canvas',
+  'modules/sticky-footer'
+;

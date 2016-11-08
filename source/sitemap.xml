@@ -1,5 +1,6 @@
 ---
 layout: null
+title: Sitemap
 sitemap:
   exclude: 'yes'
 ---
@@ -54,4 +55,3 @@ sitemap:
     {% endunless %}
   {% endfor %}
 </urlset>
-
