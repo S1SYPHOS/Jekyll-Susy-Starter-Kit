@@ -1,4 +1,6 @@
-# Jekyll-Susy-Starter-Kit
+# Jekyll/Susy Starter-Kit
+[![Release](https://img.shields.io/github/release/S1SYPHOS/Jekyll-Susy-Starter-Kit.svg)](https://github.com/S1SYPHOS/Jekyll-Susy-Starter-Kit/releases) [![License](https://img.shields.io/github/license/S1SYPHOS/Jekyll-Susy-Starter-Kit.svg)](https://github.com/S1SYPHOS/Jekyll-Susy-Starter-Kit/blob/master/LICENSE) [![Issues](https://img.shields.io/github/issues/S1SYPHOS/Jekyll-Susy-Starter-Kit.svg)](https://github.com/S1SYPHOS/Jekyll-Susy-Starter-Kit/issues)
+
 **You heard about Susy and want to use it on your next project? You also love Jekyll and don't want to miss it? Then THIS is for you!**
 
 Here's my personal Jekyll+Susy-Starter-Kit - starring:
